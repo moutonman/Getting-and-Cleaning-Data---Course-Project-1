@@ -99,7 +99,7 @@ dim(testData)
 # merge
 bigDataset <- rbind(trainingData,testData)
 dim(bigDataset)
-colnames(testData)
+colnames(bigDataset)
 
 # 2) Extracts only the measurements on the mean and standard deviation for each measurement. 
 dim(bigDataset)
