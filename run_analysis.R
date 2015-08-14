@@ -106,6 +106,7 @@ dim(bigDataset)
 bigDataset <- bigDataset[,unique(append(append(grep(c("[.]id"),colnames(bigDataset)) , grep(c("[.]mean[.]"),colnames(bigDataset))), grep(c("[.]std[.]"),colnames(bigDataset))))  ]
 dim(bigDataset)
 colnames(bigDataset)
+
 # 3) Uses descriptive activity names to name the activities in the data set
 activityLabel
 install.packages("plyr")
@@ -118,7 +119,10 @@ bigDatasetActId <- join(bigDatasetActId, activityLabel, "activity.id", match = "
 bigDataset$activity.id = bigDatasetActId$activity.label
 dim(bigDataset)
 bigDataset[1,1:6]
+
 # 4) Appropriately labels the data set with descriptive variable names. 
+# for a easiest work on data, variable names have been set before upper on this code.
+
 # 5) From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 averageByActivityAndSubject <- aggregate(bigDataset[,3:dim(bigDataset)[2]],by = list(subject=bigDataset$subject.id,activity=bigDataset$activity.id),FUN = mean, subset=bigDataset[,3:4])
 dim(averageByActivityAndSubject)
